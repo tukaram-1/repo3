@@ -1,10 +1,45 @@
-To checking purpose created new file
-branch-3 created in branch-1 
-branch-1 created in main branch
-the main branch is in repo-3 file
-connecting web by main cmd
-creating new file
+pipeline {
+    agent any  // This will run on any available node
 
+    stages {
+        stage('Build') {
+            steps {
+                // Simulate a build process
+                sh 'echo "Building the project..."'
+                // Replace the above line with your actual build command, e.g.,:
+                // sh 'make build'
+            }
+        }
 
+        stage('Test') {
+            steps {
+                // Simulate running tests
+                sh 'echo "Running tests..."'
+ // Replace the above line with your actual test command, e.g.,:
+                // sh 'make test'
+            }
+        }
 
-also editing another file 
+        stage('Deploy') {
+            steps {
+                // Simulate deployment
+                sh 'echo "Deploying the application..."'
+                // Replace the above line with your actual deploy command, e.g.,:
+                // sh 'deploy.sh'
+            }
+          }  
+        }
+    }
+
+    post {
+        success {
+            echo 'Build completed successfully!'
+        }
+        failure {
+            echo 'Build failed!'
+        }
+        always {
+            echo 'Cleaning up...'
+            // Cleanup actions if necessary
+        }
+    }
